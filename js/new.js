@@ -7,7 +7,7 @@ var localStream;
 var pc;
 var remoteStream;
 var turnReady;
-
+var blockMessage = false;
 var pc_config = {'iceServers': [{'url': 'stun:stun1.l.google.com:19302'},{ 'url': 'turn:numb.viagenie.ca', 'credential' : '2201234321k', 'username' : 'kevz93g@gmail.com'}]};
 
 var pc_constraints = {'optional': [{'DtlsSrtpKeyAgreement': true}]};
@@ -40,6 +40,7 @@ socket.on('created', function (data){
 
 socket.on('full', function (room){
   console.log('Room ' + room + ' is full');
+  blockMessage =true;
 });
 
 socket.on('join', function (room){
@@ -64,14 +65,14 @@ socket.on('joinUpdate' , function(data){ console.log('NEW :: ' + data )});
 ///////////////////////////////////////////////////////////////////
 
 function sendMessage(message){
-  
+  if(!blockMessage){
   console.log('Client sending message: ',message );
   //  if (typeof message === 'object') {
   //    message = JSON.stringify(message);
   //  }
  
    socket.emit('message',{'message': message, 'room':room});
-
+}
 }
 //////////////////////////////////////////////////////////////////
 
