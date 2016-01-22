@@ -1,5 +1,6 @@
 "use strict";
 document.addEventListener('DOMContentLoaded', function() {
+    userinp = window.prompt("Hey enter any unique name : (ask your friend to enter the same name)","");
 var isOpera = !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
     // Opera 8.0+ (UA detection to detect Blink/v8-powered Opera)
 var isFirefox = typeof InstallTrigger !== 'undefined';   // Firefox 1.0+
@@ -124,7 +125,7 @@ function handleFileSelect(evt) {
 
     //------------------------------------------------------------
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~WEBRTC CORE SWAG~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    var room = 'foo';
+    var room = userinp;
     var isChannelReady;
     var isInitiator = false;
     var isStarted = false;
