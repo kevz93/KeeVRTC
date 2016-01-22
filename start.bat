@@ -1,1 +1,0 @@
-chrome --allow-file-access-from-files file:///K:/KeevRTC/test.html
